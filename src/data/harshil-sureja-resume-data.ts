@@ -6,8 +6,8 @@ const data: IData = {
       name: 'Meshvi Shah',
       profile: 'Full-Stack Developer',
       about:
-        'As a dedicated developer,my unwavering passion for innovation drives me to excel in crafting digital solutions that transcend conventional boundaries. With a keen focus on problem-solving, I relish the opportunity to leverage cutting-edge technologies and ingenious strategies to propel businesses forward on the digital frontier.',
-      profileImage: 'meshvishah.png',
+        'As a dedicated developer,my unwavering passion for innovation drives me to excel in crafting digital solutions that transcend conventional boundaries. With a keen focus on problem-solving,I relish the opportunity to leverage cutting-edge technologies and ingenious strategies to propel businesses forward on the digital frontier.',
+      profileImage: 'Meshvishah.png',
     },
 
     education: {
