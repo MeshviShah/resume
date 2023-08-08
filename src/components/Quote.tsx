@@ -62,7 +62,7 @@ export const Quote = () => {
       </Box> */}
       <Blockquote
         color={theme_name != THEME_NAME.rainbow ? '' : 'lime'}
-        cite='— Meshvi Shah'
+        cite='— Developer'
         className={SourceSerifPro.className}
       >
         {"When people see problem We can see a new project."}
