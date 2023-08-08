@@ -54,8 +54,8 @@ const data: IData = {
           description: 'Led backend development using Node.js and MongoDB.',
           duration: '6 Months',
           year: {
-            start: 2023,
-            end: 2023,
+            start: 2022,
+            end: 2022,
           },
         },
         {
