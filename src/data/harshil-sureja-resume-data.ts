@@ -30,7 +30,7 @@ const data: IData = {
           name: 'AllianceTek',
           position: 'Junior Software Developer',
           description:
-            'Led backend development using Nodejs and Different database and AWS for a comprehensive tracking project, enhancing my proficiency in building scalable and efficient APIs.',
+            'Led backend development using Nodejs and Different database for a comprehensive tracking project,enhancing my proficiency in building scalable and efficient APIs.',
           duration: 'Running',
           year: {
             start: 2022,
@@ -62,7 +62,7 @@ const data: IData = {
           name: 'Freelancer',
           position: 'Freelancer',
           description:
-            'Engaged in diverse client projects to expand my skill set, with a focus on mastering technologies such as Node.js, React.js, TypeScript, and databases like MongoDB and PostgreSQL,AWS EC2,CI/CD demonstrating continuous learning and adaptability.',
+            'Engaged in diverse client projects to expand my skill set, with a focus on mastering technologies such as Node.js, React.js, TypeScript, and databases like MongoDB and PostgreSQL, and cloud technology like AWS EC2,CI/CD demonstrating continuous learning and adaptability.',
           duration: 'Ongoing',
           year: {
             start: 2022,

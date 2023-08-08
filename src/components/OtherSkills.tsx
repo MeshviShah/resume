@@ -26,6 +26,20 @@ export const OtherSkills = ({ otherSkills }: { otherSkills: IOtherSkill }) => {
           </Badge>
         ))}
       </Flex>
+      <Title order={6} c='dimmed'>
+        Architecture
+      </Title>
+      <Flex gap={16} mb={8} justify={'center'} wrap={'wrap'}>
+        {otherSkills.architecture.map((ele: string) => (
+          <Badge
+            color={theme_name != THEME_NAME.rainbow ? '' : 'cyan'}
+            size='lg'
+            key={ele}
+          >
+            {ele}
+          </Badge>
+        ))}
+      </Flex>
     </Flex>
   );
 };
