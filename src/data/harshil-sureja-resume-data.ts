@@ -33,7 +33,7 @@ const data: IData = {
             'Led backend development using Nodejs and Different database for a comprehensive tracking project,enhancing my proficiency in building scalable and efficient APIs.',
           duration: 'Running',
           year: {
-            start: 2022,
+            start: 2023,
             end: 0,
           },
         },
@@ -81,6 +81,15 @@ const data: IData = {
           description:
             'The web app can generate Safari-style mock screenshots from uploaded image.',
           link: 'https://mockly.onrender.com',
+          year: 2023,
+          status: 1,
+        },
+        {
+          name: 'PieNest',
+          stack: 'Backend',
+          description:
+            'Collaborated on developing an innovative Android application that empowers users to conveniently search for properties and various services, including cleaning, food delivery, and transportation.',
+          // link: 'https://github.com/MeshviShah/FinancialERP',
           year: 2023,
           status: 1,
         },
