@@ -131,6 +131,7 @@ const data: IData = {
 
     techSkill: {
       frontEnd: ['React','Next.JS'],
+   
       backEnd: ['Node.js', 'koa','Express'],
       database: ['Postgres', 'MongoDB'],
     },
