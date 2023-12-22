@@ -76,6 +76,15 @@ const data: IData = {
       tagLine: '{{codding}} is belong from Array.hobbies',
       projects: [
         {
+          name: 'Finance Portal',
+          stack: 'MERN stack',
+          description:
+            'Developed a Client Analytics Portal using Node.js,ReactJs and AWS, providing a dynamic platform for our client to access tailored analytics and reports. The portal features interactive graphs, user-defined filters for customized reports, and seamless calendar integration for in-depth trend analysis. Additionally, the export functionality allows users to effortlessly export Reports to Excel files with embedded formulas, streamlining external analysis.',
+           //link: 'https://portal-frontend-huos.onrender.com',
+          year: 2023,
+          status: 1,
+        },
+        {
           name: 'Mock Studio',
           stack: 'React Js',
           description:
@@ -121,8 +130,8 @@ const data: IData = {
     },
 
     techSkill: {
-      frontEnd: ['React'],
-      backEnd: ['Node.js', 'koa'],
+      frontEnd: ['React','Next.JS'],
+      backEnd: ['Node.js', 'koa','Express'],
       database: ['Postgres', 'MongoDB'],
     },
 

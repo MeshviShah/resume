@@ -22,7 +22,7 @@ function App({ Component, pageProps }: AppProps) {
     setColorScheme(nextColorScheme);
     dispatch(updateColorSchema(nextColorScheme));
   };
-  const theme = useMantineTheme();
+const theme = useMantineTheme();
   const ignoreColors: string[] = ['dark', 'gray', 'green', 'yellow'];
   const swatches: string[] = Object.keys(theme.colors).filter((color) => {
     return !ignoreColors.includes(color) && theme.colors[color][5];
@@ -30,7 +30,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Harshil Sureja</title>
+        <title>Meshvi Shah</title>
         <meta
           name='viewport'
           content='minimum-scale=1, initial-scale=1, width=device-width'
