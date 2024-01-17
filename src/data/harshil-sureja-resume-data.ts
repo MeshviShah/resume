@@ -21,6 +21,15 @@ const data: IData = {
             end: 2023,
           },
         },
+        {
+          name: 'Taxshila,Prantij',
+          courseTag: 'Science',
+          course: '11-12th',
+          year: {
+            start: 2017,
+            end: 2019,
+          },
+        },
       ],
     },
 
@@ -130,14 +139,14 @@ const data: IData = {
     },
 
     techSkill: {
-      frontEnd: ['React','Next.JS'],
+      frontEnd: ['React','Next.JS','Angular'],
    
       backEnd: ['Node.js', 'koa','Express'],
       database: ['Postgres', 'MongoDB'],
     },
 
     otherSkill: {
-      cloud: ['AWS', 'Supabase', 'CI/CD'],
+      cloud: ['AWS', 'Supabase', 'CI/CD'],                                  
       architecture: ['Monolithic', 'Microservice'],
     },
 
@@ -147,12 +156,12 @@ const data: IData = {
       {
         platform: 'Phone',
         text: '+91 7383037983',
-        link: 'tel://917383037983',
+        link: 'tel:917383037983',
       },
       {
         platform: 'Email',
         text: 'shahmeshvi1011@gmail.com',
-        link: 'mailto://shahmeshvi1011@gmail.com',
+        link: 'mailto:shahmeshvi1011@gmail.com',
       },
       {
         platform: 'LinkedIn',
