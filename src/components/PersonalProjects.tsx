@@ -7,6 +7,7 @@ import {
   Text,
   Timeline,
   Title,
+  List,
 } from '@mantine/core';
 import { IPersonalProjects, IProject } from '../types';
 import {
@@ -70,7 +71,15 @@ export const PersonalProjects = ({
             }
             key={i}
           >
-            <Text>{ele.description}</Text>
+             <List size="sm" spacing="xs">
+    {Array.isArray(ele.description) ? (
+      ele.description.map((point, idx) => (
+        <List.Item key={idx}>{point}</List.Item>
+      ))
+    ) : (
+      <Text>{ele.description}</Text>
+    )}
+  </List>
             <Anchor
               href={ele?.link}
               target='_blank'
