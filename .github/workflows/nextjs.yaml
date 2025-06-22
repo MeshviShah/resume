@@ -1,8 +1,8 @@
-name: Deploy Next.js site to GitHub Pages
+name: Deploy Next.js to GitHub Pages
 
 on:
   push:
-    branches: ['main']
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -18,31 +18,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-
+      
       - name: Install dependencies
         run: npm ci
-
+      
       - name: Build with Next.js
         run: |
           npm run build
-          # Ensure the out directory exists
+          # Verify out directory exists
           if [ ! -d "./out" ]; then
-            echo "ERROR: ./out directory was not generated!"
-            echo "Contents of project root:"
+            echo "::error::./out directory not found!"
+            echo "Project structure:"
             ls -la
-            echo "Contents of .next directory:"
-            ls -la ./.next
+            echo ".next directory contents:"
+            ls -la .next
             exit 1
           fi
-
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
