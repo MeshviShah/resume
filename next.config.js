@@ -1,12 +1,9 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+module.exports = {
   output: 'export',
-  distDir: 'out', // Explicitly set output directory
-  // Add these if you have images
   images: {
-    unoptimized: true, // Required for static export
-  }
+    unoptimized: true // Required for static exports
+  },
+  // Add if deploying to project site (username.github.io/repo)
+  basePath: '/resume',
+  assetPrefix: '/resume/'
 }
-
-module.exports = nextConfig
