@@ -2,13 +2,12 @@
   "name": "Meshvishah",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+ "scripts": {
     "dev": "next dev",
-    "build": "next build && next export", 
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "export": "next export" 
-  }
+    "lint": "next lint"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
