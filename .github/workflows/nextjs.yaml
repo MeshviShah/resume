@@ -30,13 +30,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build with Next.js (static export)
-        run: npm run build
-
-      - name: Verify output directory
+      - name: Build with Next.js
         run: |
-          ls -la ./out
-          echo "BUILD COMPLETED - OUTPUT DIRECTORY CONTENTS SHOWN ABOVE"
+          npm run build
+          # Ensure the out directory exists
+          if [ ! -d "./out" ]; then
+            echo "ERROR: ./out directory was not generated!"
+            echo "Contents of project root:"
+            ls -la
+            echo "Contents of .next directory:"
+            ls -la ./.next
+            exit 1
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
