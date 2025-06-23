@@ -3,48 +3,21 @@ name: Deploy Next.js to GitHub Pages
 on:
   push:
     branches: [main]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Build with Next.js
-        run: |
-          npm run build
-          ls -la  # Debug: Verify 'out/' exists
-          if [ ! -d "./out" ]; then
-            echo "❌ Error: 'out' directory missing!"
-            exit 1
-          fi
-      
-      - name: Upload artifact (with explicit retention)
-        uses: actions/upload-pages-artifact@v3
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - run: ls -la out/ # Verify output
+      - uses: actions/upload-pages-artifact@v2
         with:
-          path: './out'
-          retention-days: 1  # Ensures artifact persists
-        id: upload-artifact
-
-      - name: Verify artifact upload (Critical!)
-        run: |
-          echo "Artifact ID: ${{ steps.upload-artifact.outputs.artifact-id }}"
-          echo "Artifact URL: ${{ steps.upload-artifact.outputs.artifact-url }}"
+          path: 'out'
 
   deploy:
     needs: build
@@ -53,9 +26,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Wait for GitHub API sync (Mandatory!)
-        run: sleep 30  # 30-second delay for artifact propagation
-
-      - name: Deploy to GitHub Pages
+      - uses: actions/deploy-pages@v2
         id: deployment
-        uses: actions/deploy-pages@v3
