@@ -28,17 +28,23 @@ jobs:
       - name: Build with Next.js
         run: |
           npm run build
-          ls -la # Debug build output
+          ls -la  # Debug: Verify 'out/' exists
           if [ ! -d "./out" ]; then
-            echo "::error::Missing 'out' directory!"
+            echo "❌ Error: 'out' directory missing!"
             exit 1
           fi
       
-      - name: Upload artifact
+      - name: Upload artifact (with explicit retention)
         uses: actions/upload-pages-artifact@v3
         with:
           path: './out'
-          retention-days: 1 # Keep artifact available longer
+          retention-days: 1  # Ensures artifact persists
+        id: upload-artifact
+
+      - name: Verify artifact upload (Critical!)
+        run: |
+          echo "Artifact ID: ${{ steps.upload-artifact.outputs.artifact-id }}"
+          echo "Artifact URL: ${{ steps.upload-artifact.outputs.artifact-url }}"
 
   deploy:
     needs: build
@@ -47,9 +53,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Wait for artifact processing
-        run: sleep 15 # Critical delay
-        
+      - name: Wait for GitHub API sync (Mandatory!)
+        run: sleep 30  # 30-second delay for artifact propagation
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
