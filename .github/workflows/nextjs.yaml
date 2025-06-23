@@ -10,10 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: 'pages'
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,10 +28,9 @@ jobs:
       - name: Build with Next.js
         run: |
           npm run build
-          # Verify 'out' directory exists
+          ls -la # Debug build output
           if [ ! -d "./out" ]; then
-            echo "❌ Error: 'out' directory missing!"
-            ls -la  # Debug folder structure
+            echo "::error::Missing 'out' directory!"
             exit 1
           fi
       
@@ -43,7 +38,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './out'
-          retention-days: 1  # Explicitly set retention
+          retention-days: 1 # Keep artifact available longer
 
   deploy:
     needs: build
@@ -52,9 +47,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Wait for artifact to stabilize
-        run: sleep 10  # Prevents race condition
-      
+      - name: Wait for artifact processing
+        run: sleep 15 # Critical delay
+        
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
