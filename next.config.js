@@ -1,12 +1,17 @@
-module.exports = {
-  reactStrictMode: true,
-  output: 'export',
-  distDir: 'out', // Explicitly set output directory
-  trailingSlash: true,
-  basePath: process.env.NODE_ENV === 'production' ? '/resume' : '',
-  // Add these if you have images
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', // Static export mode
+  trailingSlash: true, // Recommended for GitHub Pages
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true // Required for static exports
+  },
+  // Add this if you use next/font
+  experimental: {
+    fontLoaders: [
+      { loader: '@next/font/web', options: { subsets: ['latin'] } }
+    ]
   }
- 
 }
+
+module.exports = nextConfig
