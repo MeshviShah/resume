@@ -32,13 +32,10 @@ jobs:
       - name: Build with Next.js
         run: |
           npm run build
-          # Verify out directory exists
+          # Check if 'out' directory exists
           if [ ! -d "./out" ]; then
-            echo "::error::./out directory not found!"
-            echo "Project structure:"
-            ls -la
-            echo ".next directory contents:"
-            ls -la .next
+            echo "❌ Error: 'out' directory missing!"
+            ls -la  # Debug project structure
             exit 1
           fi
       
@@ -54,6 +51,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Wait for GitHub Pages to initialize
+        run: sleep 30  # Prevents 404 errors
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
