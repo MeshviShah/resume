@@ -4,18 +4,30 @@ on:
   push:
     branches: [main]
 
+permissions:
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run build
-      - run: ls -la out/ # Verify output
-      - uses: actions/upload-pages-artifact@v2
+      
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build
+          # Verify out/ exists (critical for Next.js export)
+          ls -la out/
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v2  # ← Key change: Use v2 instead of v3
         with:
           path: 'out'
 
@@ -26,5 +38,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v2
+      - name: Deploy
         id: deployment
+        uses: actions/deploy-pages@v2  # ← Key change: Use v2 instead of v3
