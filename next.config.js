@@ -6,7 +6,5 @@ module.exports = {
   images: {
     unoptimized: true, // Required for static export
   }
-  // Add if deploying to project site (username.github.io/repo)
-  basePath: '/resume',
-  assetPrefix: '/resume/'
+ 
 }
